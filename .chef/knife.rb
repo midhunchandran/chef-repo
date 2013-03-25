@@ -14,6 +14,9 @@ cookbook_path            ["#{current_dir}/../cookbooks", "#{current_dir}/../site
 knife[:aws_access_key_id]  = ENV['AWS_ACCESS_KEY_ID']
 knife[:aws_secret_access_key] = ENV['AWS_SECRET_ACCESS_KEY']
 
+knife[:aws_ssh_key_id] = ENV['AWS_SSH_KEY_ID']
+knife[:identity_file] = "#{ENV['HOME']}/.ssh/#{ENV['AWS_SSH_KEY_ID']}.pem"
+
 knife[:rackspace_api_username] = ENV['RACKSPACE_API_USERNAME']
 knife[:rackspace_api_key] = ENV['RACKSPACE_API_KEY']
 knife[:rackspace_version] = ENV['RACKSPACE_VERSION']
