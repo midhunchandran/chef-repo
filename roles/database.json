@@ -1,0 +1,22 @@
+{
+  "name": "database",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+    "mysql": {
+      "server_root_password": "password"
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[apt]",
+    "recipe[build-essential]",
+    "recipe[chef::client_service]",
+    "recipe[mysql::server]",
+    "recipe[mysql::remotegrant]"
+  ],
+  "env_run_lists": {
+  }
+}

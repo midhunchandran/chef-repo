@@ -1,0 +1,60 @@
+{
+  "name": "wordpress",
+  "description": "Blog using wordpress",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+    "wordpress": {
+      "blog_updater": {
+        "username": "blog",
+        "password": "big-secret"
+      },
+      "homeurl": "http://demo.cloudmovers.org",
+      "checksum": "c68588ca831b76ac8342d783b7e3128c9f4f75aad39c43a7f2b33351634b74de",
+      "server_aliases": [
+        "test.ibd.com",
+        "wordpress-test.ibd.com"
+      ],
+      "version": "3.0.4",
+      "db": {
+        "host": "65dcd3c5bf054158e93ceb95750cd942a18c789e.rackspaceclouddb.com"
+      },
+      "siteurl": "http://demo.cloudmovers.org"
+    },
+    "authorization": {
+      "sudo": {
+        "groups": [
+
+        ],
+        "users": [
+          "mchandran_test",
+          "ubuntu"
+        ]
+      }
+    },
+    "vsftpd": {
+      "chroot_users": [
+        "blog"
+      ]
+    },
+    "postfix": {
+      "myhostname": "test.ibd.com",
+      "mydomain": "ibd.com"
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[apt]",
+    "recipe[build-essential]",
+    "recipe[chef::client_service]",
+    "recipe[sudo]",
+    "recipe[postfix]",
+    "recipe[mysql::server]",
+    "recipe[wordpress]",
+    "recipe[wordpress::blog_user]",
+    "recipe[vsftpd]"
+  ],
+  "env_run_lists": {
+  }
+}
