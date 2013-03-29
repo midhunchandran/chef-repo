@@ -20,3 +20,5 @@ knife[:identity_file] = "#{ENV['HOME']}/.ssh/#{ENV['AWS_SSH_KEY_ID']}.pem"
 knife[:rackspace_api_username] = ENV['RACKSPACE_API_USERNAME']
 knife[:rackspace_api_key] = ENV['RACKSPACE_API_KEY']
 knife[:rackspace_version] = ENV['RACKSPACE_VERSION']
+
+encrypted_data_bag_secret "#{ENV['ENC_SECRET']}"

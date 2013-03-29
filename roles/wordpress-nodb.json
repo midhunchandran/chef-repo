@@ -6,7 +6,7 @@
     "build_essential": {
       "compiletime": true
     },
-    "cloudmonitoring": {
+    "cloud_monitoring": {
       "secretpath": "/root/secrets/encrypted_data_bag_secret"
     }
   },
@@ -16,6 +16,7 @@
         "username": "blog",
         "password": "big-secret"
       },
+      "plugindir": "/var/www/wordpress/wp-content/plugins",
       "homeurl": "http://demo.cloudmovers.org",
       "checksum": "c68588ca831b76ac8342d783b7e3128c9f4f75aad39c43a7f2b33351634b74de",
       "server_aliases": [
@@ -24,7 +25,7 @@
       ],
       "version": "3.0.4",
       "db": {
-        "host": "10.182.1.48"
+        "host": "b01a6c77519bec7dcbe43a563f9b2a12289b046d.rackspaceclouddb.com"
       },
       "siteurl": "http://demo.cloudmovers.org"
     },
@@ -60,10 +61,11 @@
     "recipe[openssl]",
     "recipe[postfix]",
     "recipe[wordpress::nodb]",
-    "recipe[wordpress::blog_user]",
     "recipe[vsftpd]",
-    "recipe[cloudmonitoring::default]",
-    "recipe[cloudmonitoring::agent]"
+    "recipe[cloud_monitoring::init]",
+    "recipe[cloud_monitoring::default]",
+    "recipe[cloud_monitoring::agent]",
+    "recipe[cloud_monitoring::checks]"
   ],
   "env_run_lists": {
   }

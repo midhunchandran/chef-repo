@@ -6,7 +6,8 @@
   },
   "override_attributes": {
     "mysql": {
-      "server_root_password": "password"
+      "server_root_password": "password",
+      "bind_address": "0.0.0.0"
     }
   },
   "chef_type": "role",
